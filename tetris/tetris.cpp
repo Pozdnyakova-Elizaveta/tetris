@@ -2,13 +2,16 @@
 //
 #include "square.h"
 #include <math.h>
+#include <dos.h>
 #include <SFML/Graphics.hpp>
+#include "menu.h"
 #include <iostream>
+#include <windows.h>
 using namespace sf;
 int main()
 {
     Square* s= new Square;
-    RenderWindow window(VideoMode(400, 300), "The Game!");
+    RenderWindow window(VideoMode(1100, 600), "Tetris");
     while (window.isOpen())
     {
         sf::Event event;
@@ -17,21 +20,21 @@ int main()
             if (event.type == sf::Event::Closed)
                 window.close();
         }
-        
-
-        // Создание спрайта
         window.clear(Color::White);
+        start_menu(window);
+        /*/ Создание спрайта
 
         // Отрисовка спрайта
         s->setup();
         window.draw(*s->get_square());
 
-        // Отрисовка окна
+        // Отрисовка окна?/*/
         window.display();
     }
 
     return 0;
 }
+
 // Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
 // Отладка программы: F5 или меню "Отладка" > "Запустить отладку"
 

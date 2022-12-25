@@ -1,6 +1,5 @@
 #include "menu.h"
 void start_menu(RenderWindow& window) {
-    bool isMenu = 1;
     Texture menu_background, menu_title, rules_button, play_button;
     menu_background.loadFromFile("image\\background.jpg");
     menu_title.loadFromFile("image\\title.png");

@@ -5,3 +5,4 @@ Base_window::Base_window() {
 	background.loadFromFile("image\\background.jpg");
 	s_background.setTexture(background);
 }
+Base_window::~Base_window() {}

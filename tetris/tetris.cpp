@@ -8,12 +8,11 @@
 #include <iostream>
 #include <windows.h>
 using namespace sf;
-int main()
+void main()
 {
     Menu* menu = new Menu();
     menu->functioning();
-
-    return 0;
+    delete menu;
 }
 
 // Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"

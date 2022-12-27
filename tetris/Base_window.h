@@ -10,6 +10,7 @@ protected:
 	Sprite s_background;
 public:
 	Base_window();
+	~Base_window();
 	virtual void functioning() = 0;
 
 };

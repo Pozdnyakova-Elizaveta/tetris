@@ -1,5 +1,10 @@
 #pragma once
-#include <SFML/Graphics.hpp>
-#include <windows.h>
-using namespace sf;
-void start_menu(RenderWindow& window);
+#include "Base_window.h"
+class Menu:public Base_window  {
+private:
+	Texture menu_title, rules_button, play_button;
+	Sprite s_rules, s_title, s_play;
+public:
+	Menu();
+	void functioning();
+};

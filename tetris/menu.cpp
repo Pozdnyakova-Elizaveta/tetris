@@ -38,7 +38,6 @@ void Menu::functioning() {
                 if (change > 1000) {
                     s_title.setTextureRect(IntRect(0, 0, i * 500, 797));
                     i++;
-                    cout << i << endl;
                     change = 0;
                 }
                 else {
@@ -72,16 +71,18 @@ void Menu::functioning() {
                         window.setMouseCursor(cursor);
                 }
             }
-        }
-        if (Mouse::isButtonPressed(Mouse::Left) && IntRect(1000, 20, 62, 60).contains(Mouse::getPosition(window))) {
-            window.clear();
-            Rules *rules = new Rules();
-            rules->functioning();
-        }
-
-        if (Mouse::isButtonPressed(Mouse::Left) && IntRect(450, 400, 214, 90).contains(Mouse::getPosition(window))) {
-            window.close();
-            //game(window);
+            if (event.type == event.MouseButtonReleased && event.mouseButton.button == Mouse::Left) {
+                if (IntRect(1000, 20, 62, 60).contains(Mouse::getPosition(window))){
+                    window.clear();
+                    Rules* rules = new Rules();
+                    rules->functioning();
+                    delete rules;
+                }
+                if (IntRect(450, 400, 214, 90).contains(Mouse::getPosition(window))) {
+                    window.close();
+                    //game(window);
+                }
+            }
         }
     }
 }

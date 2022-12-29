@@ -146,6 +146,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Base_window.cpp" />
+    <ClCompile Include="Game.cpp" />
     <ClCompile Include="menu.cpp" />
     <ClCompile Include="Rules.cpp" />
     <ClCompile Include="square.cpp" />
@@ -153,6 +154,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Base_window.h" />
+    <ClInclude Include="Game.h" />
     <ClInclude Include="menu.h" />
     <ClInclude Include="Rules.h" />
     <ClInclude Include="square.h" />

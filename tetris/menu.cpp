@@ -1,5 +1,6 @@
 #include "menu.h"
 #include "Rules.h"
+#include "Game.h"
 #include <iostream>
 using namespace std;
 Menu::Menu():Base_window() {
@@ -80,7 +81,9 @@ void Menu::functioning() {
                 }
                 if (IntRect(450, 400, 214, 90).contains(Mouse::getPosition(window))) {
                     window.close();
-                    //game(window);
+                    Game* game = new Game();
+                    game->functioning();
+                    delete game;
                 }
             }
         }

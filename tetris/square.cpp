@@ -12,6 +12,10 @@ Square::Square() {
 	s_square.setTextureRect(IntRect(color_num * 30, 0, 30, 30));
 	s_brocken_square.setTextureRect(IntRect(color_num * 30, 0, 30, 30));
 }
+Square::Square(Square& s1) {
+	this->s_square = s1.s_square;
+	this->s_brocken_square = s1.s_brocken_square;
+}
 Square::~Square() {
 
 }

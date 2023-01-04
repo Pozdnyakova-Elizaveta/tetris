@@ -11,6 +11,7 @@ public:
 	Sprite s_brocken_square;
 public:
 	Square();
+	Square(Square& s1);
 	~Square();
 	Sprite get_square();
 	Sprite get_brocken_square();

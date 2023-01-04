@@ -1,4 +1,5 @@
 #include "Game.h"
+#include "Square.h"
 Game::Game():Base_window() {
 	grid.loadFromFile("image\\grid.png");
 	s_grid.setTexture(grid);
@@ -10,6 +11,7 @@ void Game::functioning() {
         Event event;
         window.draw(s_background);
         s_grid.setPosition(30,20);
+        s_grid.setScale(1.2f,1.2f);
         window.draw(s_grid);
         window.display();
         while (window.pollEvent(event))

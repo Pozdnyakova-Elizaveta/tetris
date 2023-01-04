@@ -3,7 +3,7 @@ Rules::Rules():Base_window() {
 
 }
 void Rules::functioning() {
-    RenderWindow window(VideoMode(1100, 600), "Tetris");
+    RenderWindow window(VideoMode(length, width), "Tetris");
     while (window.isOpen())
     {
         Event event;

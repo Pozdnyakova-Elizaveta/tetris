@@ -21,11 +21,11 @@ void Menu::functioning() {
         Event event;
         Event event_rules;
         window.draw(s_background);
-        s_title.setPosition(260, 160);
+        s_title.setPosition(160, 260);
         s_title.setScale(0.2f, 0.2f);
-        s_rules.setPosition(1000, 20);
+        s_rules.setPosition(800, 20);
         s_rules.setScale(0.3f, 0.3f);
-        s_play.setPosition(450, 400);
+        s_play.setPosition(350, 550);
         s_play.setScale(2.0f, 2.0f);
         if (!animation) {
             float time = clock.getElapsedTime().asMicroseconds();
@@ -63,7 +63,7 @@ void Menu::functioning() {
             if (event.type == sf::Event::Closed)
                 window.close();
             if (event.type == sf::Event::MouseMoved) {
-                if ((event.mouseMove.x >= 1000 && event.mouseMove.x <= 1062 && event.mouseMove.y >= 20 && event.mouseMove.y <= 80)||(event.mouseMove.x >= 450 && event.mouseMove.x <= 664 && event.mouseMove.y >= 400 && event.mouseMove.y <= 490)) {
+                if ((event.mouseMove.x >= 800 && event.mouseMove.x <= 862 && event.mouseMove.y >= 20 && event.mouseMove.y <= 80)||(event.mouseMove.x >= 350 && event.mouseMove.x <= 564 && event.mouseMove.y >= 550 && event.mouseMove.y <= 640)) {
                     if (cursor.loadFromSystem(sf::Cursor::Hand))
                         window.setMouseCursor(cursor);
                 }
@@ -73,13 +73,13 @@ void Menu::functioning() {
                 }
             }
             if (event.type == event.MouseButtonReleased && event.mouseButton.button == Mouse::Left) {
-                if (IntRect(1000, 20, 62, 60).contains(Mouse::getPosition(window))){
+                if (IntRect(800, 20, 62, 60).contains(Mouse::getPosition(window))){
                     window.clear();
                     Rules* rules = new Rules();
                     rules->functioning();
                     delete rules;
                 }
-                if (IntRect(450, 400, 214, 90).contains(Mouse::getPosition(window))) {
+                if (IntRect(350, 550, 214, 90).contains(Mouse::getPosition(window))) {
                     window.close();
                     Game* game = new Game();
                     game->functioning();

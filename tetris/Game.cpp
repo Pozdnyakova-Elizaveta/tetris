@@ -1,7 +1,8 @@
 #include "Game.h"
 #include "Square.h"
+#include "Shapes.h"
 Game::Game():Base_window() {
-	grid.loadFromFile("image\\grid.png");
+	grid.loadFromFile("image\\grid.jpeg");
 	s_grid.setTexture(grid);
 }
 void Game::functioning() {
@@ -13,6 +14,8 @@ void Game::functioning() {
         s_grid.setPosition(30,20);
         s_grid.setScale(1.2f,1.2f);
         window.draw(s_grid);
+        Shapes s7;
+        s7.Choice_shape(window);
         window.display();
         while (window.pollEvent(event))
         {

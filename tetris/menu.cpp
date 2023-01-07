@@ -2,6 +2,8 @@
 #include "Rules.h"
 #include "Game.h"
 #include <iostream>
+#include <SFML/Audio.hpp>
+
 using namespace std;
 Menu::Menu():Base_window() {
     menu_title.loadFromFile("image\\title.png");
@@ -16,6 +18,10 @@ void Menu::functioning() {
     bool animation = 0;
     Clock clock;
     float change = 0;
+    sf::Music music;
+    music.openFromFile("music\\2340.wav");
+    music.play();
+    music.setLoop(true);
     while (window.isOpen())
     {
         Event event;

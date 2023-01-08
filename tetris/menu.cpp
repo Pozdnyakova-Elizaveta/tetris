@@ -41,6 +41,11 @@ void Menu::functioning() {
             int i = 1;
             s_title.setTextureRect(IntRect(0, 0,0, 0));
             while (i != 7) {
+                if (Keyboard::isKeyPressed(Keyboard::Escape))
+                {
+                    i = 7;
+                    s_title.setTextureRect(IntRect(0, 0, 3000, 797));
+                }
                 window.draw(s_background);
                 if (change > 1000) {
                     s_title.setTextureRect(IntRect(0, 0, i * 500, 797));

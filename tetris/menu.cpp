@@ -3,23 +3,24 @@
 #include "Game.h"
 #include <iostream>
 #include <SFML/Audio.hpp>
-
+bool Menu::animation = 0;
 using namespace std;
 Menu::Menu():Base_window() {
-    menu_title.loadFromFile("image\\title.png");
-    rules_button.loadFromFile("image\\rules.png");
-    play_button.loadFromFile("image\\start.png");
+    menu_title.loadFromFile("files\\title.png");
+    rules_button.loadFromFile("files\\rules.png");
+    play_button.loadFromFile("files\\start.png");
     s_rules.setTexture(rules_button);
     s_title.setTexture(menu_title);
     s_play.setTexture(play_button);
 }
+void Menu::set_animation(bool a) { animation = a; }
+bool Menu::get_animation() { return animation; }
 void Menu::functioning() {
     RenderWindow window(VideoMode(length, width), "Tetris");
-    bool animation = 0;
     Clock clock;
     float change = 0;
     sf::Music music;
-    music.openFromFile("music\\2340.wav");
+    music.openFromFile("files\\2340.wav");
     music.play();
     music.setLoop(true);
     while (window.isOpen())
@@ -33,7 +34,7 @@ void Menu::functioning() {
         s_rules.setScale(0.3f, 0.3f);
         s_play.setPosition(350, 550);
         s_play.setScale(2.0f, 2.0f);
-        if (!animation) {
+        if (!Menu::get_animation()) {
             float time = clock.getElapsedTime().asMicroseconds();
             clock.restart();
             time = time / 800;
@@ -61,7 +62,7 @@ void Menu::functioning() {
                 window.draw(s_title);
                 window.display();
             }
-            animation = true;
+            Menu::set_animation(true);
         }
         window.draw(s_background);
         window.draw(s_title);

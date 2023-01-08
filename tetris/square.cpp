@@ -2,8 +2,8 @@
 #include <iostream>
 using namespace std;
 Square::Square() {
-	t_square.loadFromFile("image\\texture_squares.jpg");
-	t_brocken_square.loadFromFile("image\\brocken_squares.jpg");
+	t_square.loadFromFile("files\\texture_squares.jpg");
+	t_brocken_square.loadFromFile("files\\brocken_squares.jpg");
 	srand(time(NULL));
 	color_num = rand() % 6;
 	s_square.setTexture(t_square);

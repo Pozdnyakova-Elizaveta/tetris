@@ -1,15 +1,15 @@
 #pragma once
 #include "Base_window.h"
-class Game :public Base_window
+class Game :public Base_window //класс игрового окна
 {
 private:
 	Texture grid;
-	Sprite s_grid;
-	Sprite s_grid_next_shapes;
-	Font font;
-	Texture button_main_menu;
+	Sprite s_grid;//игровое поле
+	Sprite s_grid_next_shapes;//поле для изображения следующей фигуры
+	Font font;//шрифт для надписей
+	Texture button_main_menu;//кнопка выхода в главное меню
 	Sprite s_button_main_menu;
-	int score;
+	int score;//счет игры
 public:
 	Game();
 	void functioning();

@@ -6,15 +6,13 @@
 bool Menu::animation = 0;
 using namespace std;
 Menu::Menu():Base_window() {
-    menu_title.loadFromFile("files\\title.png");
+    menu_title.loadFromFile("files\\title.png");//получение изображений элементов меню
     rules_button.loadFromFile("files\\rules.png");
     play_button.loadFromFile("files\\start.png");
     s_rules.setTexture(rules_button);
     s_title.setTexture(menu_title);
     s_play.setTexture(play_button);
 }
-void Menu::set_animation(bool a) { animation = a; }
-bool Menu::get_animation() { return animation; }
 void Menu::functioning() {
     RenderWindow window(VideoMode(length, width), "Tetris");
     Clock clock;
@@ -34,7 +32,7 @@ void Menu::functioning() {
         s_rules.setScale(0.3f, 0.3f);
         s_play.setPosition(350, 550);
         s_play.setScale(2.0f, 2.0f);
-        if (!Menu::get_animation()) {
+        if (!animation) {
             float time = clock.getElapsedTime().asMicroseconds();
             clock.restart();
             time = time / 800;
@@ -62,7 +60,7 @@ void Menu::functioning() {
                 window.draw(s_title);
                 window.display();
             }
-            Menu::set_animation(true);
+            animation=true;
         }
         window.draw(s_background);
         window.draw(s_title);

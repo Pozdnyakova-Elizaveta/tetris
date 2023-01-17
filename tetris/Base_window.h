@@ -1,12 +1,12 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 using namespace sf;
-class Base_window
+class Base_window //абстрактный класс создания общего окна
 {
 protected:
-	int length;
+	int length; //размер окна
 	int width;
-	Texture background;
+	Texture background; //фон окна
 	Sprite s_background;
 public:
 	Base_window();

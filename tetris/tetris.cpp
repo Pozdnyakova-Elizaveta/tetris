@@ -10,7 +10,7 @@
 using namespace sf;
 void main()
 {
-    Menu* menu = new Menu();
+    Menu* menu = new Menu();//создание окна меню
     menu->functioning();
     delete menu;
 }

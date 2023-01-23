@@ -17,6 +17,7 @@ Game::Game():Base_window() {
 }
 void Game::functioning() {
     RenderWindow window(VideoMode(length, width), "Tetris");//создание окна
+    
     while (window.isOpen())
     {
         Event event;
@@ -35,8 +36,8 @@ void Game::functioning() {
         window.draw(s_grid_next_shapes);
         window.draw(text_score);
         window.draw(text_next_shape);
-        Shapes s7;
-        s7.Choice_shape(window);
+        s7.Choice_shape();
+        s7.draw_s(window);
         window.display();
         Cursor cursor;
         while (window.pollEvent(event))

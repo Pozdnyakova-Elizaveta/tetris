@@ -5,6 +5,7 @@ class Square
 {
 public:
 	int color_num; //номер цвета фигуры
+	int x, y;//координаты фигуры
 	Texture t_square;
 	Texture t_brocken_square;
 	Sprite s_square;//изображение квадрата фигуры

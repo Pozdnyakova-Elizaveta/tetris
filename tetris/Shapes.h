@@ -20,4 +20,8 @@ public:
 	void draw_s(RenderWindow& w);
 	void fall();
 	bool fall_check();
+	void left();
+	void right();
+	bool left_check();
+	bool right_check();
 };

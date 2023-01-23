@@ -109,3 +109,25 @@ bool Shapes::fall_check() {
 		return true;
 	else return false;
 }
+void Shapes::left() {
+	ss.x -= dx;
+	ss1.x -= dx;
+	ss2.x -= dx;
+	ss3.x -= dx;
+}
+void Shapes::right() {
+	ss.x += dx;
+	ss1.x += dx;
+	ss2.x += dx;
+	ss3.x += dx;
+}
+bool Shapes::left_check() {
+	if (ss.x == 31 || ss1.x == 31 || ss2.x == 31 || ss3.x == 31)
+		return true;
+	else return false;
+}
+bool Shapes::right_check() {
+	if (ss.x > 360 || ss1.x > 360 || ss2.x > 360 || ss3.x > 360)
+		return true;
+	else return false;
+}

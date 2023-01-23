@@ -2,6 +2,7 @@
 #include "Square.h"
 #include "Shapes.h"
 #include "menu.h"
+#include <Windows.h>
 Game::Game():Base_window() {
 	grid.loadFromFile("files\\grid.jpeg");//обработка изображения игрового поля
 	s_grid.setTexture(grid);
@@ -29,18 +30,11 @@ void Game::functioning() {
         std::string s = "Score: " + std::to_string(score);//строка счета
         text_score.setString(s);
         text_score.setPosition(580, 450);
-       // window.draw(s_background);//вывод фона
         s_grid.setPosition(30, 20);//размещение элементов окна
         s_grid_next_shapes.setPosition(535, 200);
         s_button_main_menu.setPosition(770, 680);
-       // window.draw(s_button_main_menu);//отрисовка элементов окна и надписей
-       // window.draw(s_grid);
-       // window.draw(s_grid_next_shapes);
-        //window.draw(text_score);
-        //window.draw(text_next_shape);
         s7.Choice_shape();
         s7.draw_s(window);
-       // window.display();
         Cursor cursor;
         time(&start);
         while (c == 0) {
@@ -70,6 +64,20 @@ void Game::functioning() {
                         Menu* menu = new Menu();
                         menu->functioning();
                         delete menu;
+                    }
+                }
+            }
+            if (event.type == sf::Event::KeyPressed) {
+                if (event.key.code == sf::Keyboard::Left) {
+                    if (s7.left_check() == false) {
+                        s7.left();
+                        Sleep(300);
+                    }
+                }
+                if (event.key.code == sf::Keyboard::Right) {
+                    if (s7.right_check() == false) {
+                        s7.right();
+                        Sleep(300);
                     }
                 }
             }

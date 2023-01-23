@@ -98,3 +98,14 @@ void Shapes::draw_s(RenderWindow& w) {
 	ss3.s_square.setPosition(ss3.x, ss3.y);
 	w.draw(ss3.s_square);
 }
+void Shapes::fall() {
+	ss.y += dx;
+	ss1.y += dx;
+	ss2.y += dx;
+	ss3.y += dx;
+}
+bool Shapes::fall_check() {
+	if (ss.y >= 690 || ss1.y >= 690 || ss2.y >= 690 || ss3.y >= 690)
+		return true;
+	else return false;
+}

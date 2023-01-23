@@ -18,4 +18,6 @@ public:
 	~Shapes();
 	void Choice_shape();
 	void draw_s(RenderWindow& w);
+	void fall();
+	bool fall_check();
 };

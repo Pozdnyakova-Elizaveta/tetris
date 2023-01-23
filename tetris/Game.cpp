@@ -17,7 +17,9 @@ Game::Game():Base_window() {
 }
 void Game::functioning() {
     RenderWindow window(VideoMode(length, width), "Tetris");//создание окна
-    
+    time_t start, next;
+    double second;
+    int c = 0;
     while (window.isOpen())
     {
         Event event;
@@ -27,41 +29,60 @@ void Game::functioning() {
         std::string s = "Score: " + std::to_string(score);//строка счета
         text_score.setString(s);
         text_score.setPosition(580, 450);
-        window.draw(s_background);//вывод фона
+       // window.draw(s_background);//вывод фона
         s_grid.setPosition(30, 20);//размещение элементов окна
         s_grid_next_shapes.setPosition(535, 200);
         s_button_main_menu.setPosition(770, 680);
-        window.draw(s_button_main_menu);//отрисовка элементов окна и надписей
-        window.draw(s_grid);
-        window.draw(s_grid_next_shapes);
-        window.draw(text_score);
-        window.draw(text_next_shape);
+       // window.draw(s_button_main_menu);//отрисовка элементов окна и надписей
+       // window.draw(s_grid);
+       // window.draw(s_grid_next_shapes);
+        //window.draw(text_score);
+        //window.draw(text_next_shape);
         s7.Choice_shape();
         s7.draw_s(window);
-        window.display();
+       // window.display();
         Cursor cursor;
-        while (window.pollEvent(event))
-        {
-            if (event.type == sf::Event::Closed)//закрытие окна
-                window.close();
-            if (event.type == sf::Event::MouseMoved) {
-                if (event.mouseMove.x >= 770 && event.mouseMove.x <= 852 && event.mouseMove.y >= 680 && event.mouseMove.y <= 760) {//курсор наведен на кнопку - изображение курсора меняется на руку
-                    if (cursor.loadFromSystem(sf::Cursor::Hand))
-                        window.setMouseCursor(cursor);
-                }
-                else {//иначе курсор - стрелка
-                    if (cursor.loadFromSystem(sf::Cursor::Arrow))
-                        window.setMouseCursor(cursor);
-                }
-            }
-            if (event.type == event.MouseButtonReleased && event.mouseButton.button == Mouse::Left) {
-                if (IntRect(770, 680, 82, 80).contains(Mouse::getPosition(window))) {//если была нажата ЛКМ в области кнопки выхода в главное меню - закрытие окна, создание окна меню
+        time(&start);
+        while (c == 0) {
+            window.draw(s_background);//вывод фона
+            window.draw(s_button_main_menu);//отрисовка элементов окна и надписей
+            window.draw(s_grid);
+            window.draw(s_grid_next_shapes);
+            window.draw(text_score);
+            window.draw(text_next_shape);
+            while (window.pollEvent(event))
+            {
+                if (event.type == sf::Event::Closed)//закрытие окна
                     window.close();
-                    Menu *menu = new Menu();
-                    menu->functioning();
-                    delete menu;
+                if (event.type == sf::Event::MouseMoved) {
+                    if (event.mouseMove.x >= 770 && event.mouseMove.x <= 852 && event.mouseMove.y >= 680 && event.mouseMove.y <= 760) {//курсор наведен на кнопку - изображение курсора меняется на руку
+                        if (cursor.loadFromSystem(sf::Cursor::Hand))
+                            window.setMouseCursor(cursor);
+                    }
+                    else {//иначе курсор - стрелка
+                        if (cursor.loadFromSystem(sf::Cursor::Arrow))
+                            window.setMouseCursor(cursor);
+                    }
+                }
+                if (event.type == event.MouseButtonReleased && event.mouseButton.button == Mouse::Left) {
+                    if (IntRect(770, 680, 82, 80).contains(Mouse::getPosition(window))) {//если была нажата ЛКМ в области кнопки выхода в главное меню - закрытие окна, создание окна меню
+                        window.close();
+                        Menu* menu = new Menu();
+                        menu->functioning();
+                        delete menu;
+                    }
                 }
             }
+            time(&next);
+            second = difftime(next, start);
+            if (second >= 2) {
+                if (s7.fall_check() == false) {
+                    s7.fall();
+                    time(&start);
+                }
+            }
+            s7.draw_s(window);
+            window.display();
         }
     }
 }

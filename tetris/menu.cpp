@@ -84,7 +84,7 @@ void Menu::functioning() {
             }
             if (event.type == event.MouseButtonReleased && event.mouseButton.button == Mouse::Left) {
                 if (IntRect(800, 20, 62, 60).contains(Mouse::getPosition(window))){
-                    window.clear();
+                    window.close();
                     Rules* rules = new Rules();
                     rules->functioning();
                     delete rules;

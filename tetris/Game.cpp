@@ -81,6 +81,9 @@ void Game::functioning() {
                     }
                 }
             }
+            if (Keyboard::isKeyPressed(Keyboard::Enter))
+                while (s7.fall_check() == false)
+                    s7.fall();
             time(&next);
             second = difftime(next, start);
             if (second >= 2) {

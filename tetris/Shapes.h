@@ -5,9 +5,7 @@ using namespace sf;
 class Shapes
 {
 protected:
-	int x, y, dx, form;
-	Texture s;
-	Sprite s1;
+	int x[8] = { 31,68,106,143,180,217,254,293}, y, dx, form, num;
 	Square ss;
 	Square ss1;
 	Square ss2;

@@ -3,18 +3,23 @@
 using namespace sf;
 class Square
 {
-public:
+private:
 	int color_num; //номер цвета фигуры
 	int x, y;//координаты фигуры
 	Texture t_square;
 	Texture t_brocken_square;
-	Sprite s_square;//изображение квадрата фигуры
+	
 	Sprite s_brocken_square;//изображение разрушенного квадрата фигуры
 public:
 	Square();
 	Square(Square& s1);//конструктор копирования
 	~Square();
+	Sprite s_square;//изображение квадрата фигуры
 	Sprite get_square();
 	Sprite get_brocken_square();
+	int get_x();
+	int get_y();
+	void set_x(int a);
+	void set_y(int a);
 };
 

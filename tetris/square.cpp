@@ -22,3 +22,15 @@ Square::~Square() {
 }
 Sprite Square::get_square() { return s_square; }
 Sprite Square::get_brocken_square() { return s_brocken_square; }
+int Square::get_x() {
+	return x;
+}
+int Square::get_y() {
+	return y;
+}
+void Square::set_x(int a) {
+	x = a;
+}
+void Square::set_y(int a) {
+	y = a;
+}

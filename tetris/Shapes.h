@@ -4,7 +4,7 @@
 using namespace sf;
 class Shapes
 {
-protected:
+private:
 	int x[8] = { 31,68,106,143,180,217,254,293}, y, dx, form, num;
 	Square ss;
 	Square ss1;

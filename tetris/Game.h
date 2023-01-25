@@ -11,7 +11,7 @@ private:
 	Texture button_main_menu;//кнопка выхода в главное меню
 	Sprite s_button_main_menu;
 	int score;//счет игры
-	Shapes s7;
+	//Shapes s7;
 public:
 	Game();
 	void functioning();

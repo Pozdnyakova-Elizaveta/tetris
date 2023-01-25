@@ -21,6 +21,10 @@ void Game::functioning() {
     time_t start, next;
     double second;
     int c = 0;
+    Shapes* s7 = new Shapes();
+    Shapes* s8 = new Shapes();
+    s7->Choice_shape();
+    s8->Choice_shape_next();
     while (window.isOpen())
     {
         Event event;
@@ -33,8 +37,9 @@ void Game::functioning() {
         s_grid.setPosition(30, 20);//размещение элементов окна
         s_grid_next_shapes.setPosition(535, 200);
         s_button_main_menu.setPosition(770, 680);
-        s7.Choice_shape();
-        s7.draw_s(window);
+        s7->Choice_shape();
+        s7->draw_s(window);
+        s8->draw_s(window);
         Cursor cursor;
         time(&start);
         while (c == 0) {
@@ -44,6 +49,8 @@ void Game::functioning() {
             window.draw(s_grid_next_shapes);
             window.draw(text_score);
             window.draw(text_next_shape);
+            s8->draw_s(window);
+            s7->draw_s(window);
             while (window.pollEvent(event))
             {
                 if (event.type == sf::Event::Closed)//закрытие окна
@@ -69,30 +76,36 @@ void Game::functioning() {
             }
             if (event.type == sf::Event::KeyPressed) {
                 if (event.key.code == sf::Keyboard::Left) {
-                    if (s7.left_check() == false) {
-                        s7.left();
+                    if (s7->left_check() == false) {
+                        s7->left();
                         Sleep(300);
                     }
                 }
                 if (event.key.code == sf::Keyboard::Right) {
-                    if (s7.right_check() == false) {
-                        s7.right();
+                    if (s7->right_check() == false) {
+                        s7->right();
                         Sleep(300);
                     }
                 }
             }
             if (Keyboard::isKeyPressed(Keyboard::Enter))
-                while (s7.fall_check() == false)
-                    s7.fall();
+                while (s7->fall_check() == false)
+                    s7->fall();
             time(&next);
             second = difftime(next, start);
             if (second >= 2) {
-                if (s7.fall_check() == false) {
-                    s7.fall();
+                if (s7->fall_check() == false) {
+                    s7->fall();
                     time(&start);
                 }
+                else {
+                    s7 = s8;
+                    s8 = new Shapes();
+                    s7->Choice_shape();
+                    s8->Choice_shape_next();
+                }
             }
-            s7.draw_s(window);
+            s7->draw_s(window);
             window.display();
         }
     }
